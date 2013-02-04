@@ -65,26 +65,14 @@ def gen_figure_norm_cpu(cpu_data1, fig_title,fig_name):
 
 	close()
 
-def gen_plot(clang_prefix1, gcc47_prefix1, gcc46_prefix1,clang_prefix12, gcc47_prefix12, gcc46_prefix12, nvcc_prefix,  nr_tests, descr):	
-#	clang_data1, clang_std1 = get_data(clang_prefix1, nr_tests)
+def gen_plot(gcc47_prefix1, gcc47_prefix12, nvcc_prefix,  nr_tests, descr):	
 	gcc47_data1, gcc47_std1 = get_data(gcc47_prefix1, nr_tests)
-#	gcc46_data1, gcc46_std1 = get_data(gcc46_prefix1, nr_tests)
 
-#	clang_data12, clang_std12 = get_data(clang_prefix12, nr_tests)
 	gcc47_data12, gcc47_std12 = get_data(gcc47_prefix12, nr_tests)
-#	gcc46_data12, gcc46_std12 = get_data(gcc46_prefix12, nr_tests)
 	
 	nvcc_data, nvcc_std = get_data(nvcc_prefix, nr_tests)
-	
-#	gen_figure(clang_data1, clang_std1,clang_data12, clang_std12,nvcc_data, nvcc_std, "Clang-3.3svn CPU vs GPU", "Clang_all.png")
-	gen_figure(gcc47_data1, gcc47_std1,gcc47_data12, gcc47_std12,nvcc_data, nvcc_std, "Gcc-4.7.2 CPU vs GPU", "Gcc472_all.png")
-#	gen_figure(gcc46_data1, gcc46_std1,gcc46_data12, gcc46_std12,nvcc_data, nvcc_std, "Gcc-4.6.3 CPU vs GPU", "Gcc463_all.png")
-	
-#	clang_norm1 = clang_data1
-#	clang_norm1[:,1] = clang_data1[:,1]/nvcc_data[:,1]
 
-#	clang_norm12 = clang_data12
-#	clang_norm12[:,1] = clang_data12[:,1]/nvcc_data[:,1]
+	gen_figure(gcc47_data1, gcc47_std1,gcc47_data12, gcc47_std12,nvcc_data, nvcc_std, "GCC-4.7.2 CPU vs GPU", "GCC472_all.png")
 
 	gcc47_norm1 = gcc47_data1
 	gcc47_norm1[:,1] = gcc47_data1[:,1]/nvcc_data[:,1]
@@ -92,32 +80,13 @@ def gen_plot(clang_prefix1, gcc47_prefix1, gcc46_prefix1,clang_prefix12, gcc47_p
 	gcc47_norm12 = gcc47_data12
 	gcc47_norm12[:,1] = gcc47_data12[:,1]/nvcc_data[:,1]
 
-#	gcc46_norm1 = gcc46_data1
-#	gcc46_norm1[:,1] = gcc46_data1[:,1]/nvcc_data[:,1]
-
-#	gcc46_norm12 = gcc46_data12
-#	gcc46_norm12[:,1] = gcc46_data12[:,1]/nvcc_data[:,1]
-	
-#	gen_figure_norm(clang_norm1, clang_norm12, "Clang-3.3svn CPU normalized with GPU","Clang_normalized.png")
-	gen_figure_norm(gcc47_norm1, gcc47_norm12, "Gcc-4.7.2 CPU normalized with GPU","Gcc472_normalized.png")
-#	gen_figure_norm(gcc46_norm1, gcc46_norm12, "Gcc-4.6.3 CPU normalized with GPU","Gcc463_normalized.png")
-	
-#	clang_norm1cpu = clang_data1
-#	clang_norm1cpu[:,1] = clang_data1[:,1]/clang_data12[:,1]
+	gen_figure_norm(gcc47_norm1, gcc47_norm12, "GCC-4.7.2 CPU normalized with GPU","GCC472_normalized.png")
 	
 	gcc47_norm1cpu = gcc47_data1
 	gcc47_norm1cpu[:,1] = gcc47_data1[:,1]/gcc47_data12[:,1]
 	
-#	gcc46_norm1cpu = gcc46_data1
-#	gcc46_norm1cpu[:,1] = gcc46_data1[:,1]/gcc46_data12[:,1]
+	gen_figure_norm_cpu(gcc47_norm1cpu, "GCC-4.7.2 CPU normalized","GCC472_normalized_cpu.png")
 	
-#	gen_figure_norm_cpu(clang_norm1cpu, "Clang-3.3svn CPU normalized","Clang_normalized_cpu.png")
-	gen_figure_norm_cpu(gcc47_norm1cpu, "Gcc-4.7.2 CPU normalized","Gcc472_normalized_cpu.png")
-#	gen_figure_norm_cpu(gcc46_norm1cpu, "Gcc-4.6.3 CPU normalized","Gcc463_normalized_cpu.png")
-	
-	
-
-nr_tests = 100
-#gen_plot("clang_data_1", "gcc_472_data_1", "gcc_463_data_1","clang_data_12", "gcc_472_data_12", "gcc_463_data_12", "nvcc_data", nr_tests, "Clang 3.2svn")
+nr_tests = 20
 gen_plot("gcc_472_data_1", "gcc_472_data_12", "nvcc_data", nr_tests, "")
 

@@ -15,13 +15,13 @@ def run_tests(prefix, nr_tests, threads):
 		print("process " + str(i) + " finished")
 
 
-nr_tests = 100
+nr_tests = 20
 ##compilers = ["clang", "gcc_463", "gcc_472", "nvcc"]
-#compilers = ["nvcc"]
+compilers = ["nvcc"]
 #compilers = ["clang"]
 #compilers = ["gcc_463"]
-compilers = ["gcc_472"]
-threads = [1, 6, 12, 24]
+#compilers = ["gcc_472"]
+threads = [1, 12]
 
 for prefix in compilers:
 	run_tests(prefix, nr_tests, threads)
