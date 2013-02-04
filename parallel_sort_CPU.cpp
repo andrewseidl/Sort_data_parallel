@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <random>
-#include <boost/chrono.hpp>
+#include <chrono>
 #include <algorithm>
 #include <thread>
 #include <ctime>
@@ -25,7 +25,7 @@ double run_tests(std::vector<double> &V, size_t parts, size_t mem) {
     std::vector<size_t> bnd = bounds(parts, mem);
     std::vector<std::thread> thr;
     
-    auto start = boost::chrono::steady_clock::now();    
+    auto start = std::chrono::steady_clock::now();    
     
     //Launch "parts" threads
     for(size_t i = 0; i < parts; ++i) {
@@ -63,9 +63,9 @@ double run_tests(std::vector<double> &V, size_t parts, size_t mem) {
         parts /= 2;
         bnd = limits;
     }
-    auto end = boost::chrono::steady_clock::now();
+    auto end = std::chrono::steady_clock::now();
     
-    return boost::chrono::duration <double, boost::milli> (end - start).count();
+    return std::chrono::duration <double, std::milli> (end - start).count();
 }
 
 
