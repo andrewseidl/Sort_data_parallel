@@ -21,7 +21,7 @@ nr_tests = 100
 #compilers = ["clang"]
 #compilers = ["gcc_463"]
 compilers = ["gcc_472"]
-threads = [1, 8]
+threads = [1, 6, 12, 24]
 
 for prefix in compilers:
 	run_tests(prefix, nr_tests, threads)
